@@ -1,0 +1,130 @@
+\begin{frame}
+\frametitle{Riemann Curvature from Sectional Curvature}
+\begin{block}{Riemann Curvature from Sectional Curvature}
+We can deduce the Riemann curvature at a point in the manifold given the sectional curvature of the surface.
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Motivation}
+We will define some basic assumptions that we will use in out proof.
+\begin{itemize}
+\item Define 
+\begin{align}
+R(x,y,z,w)=\inner{R(x,y)z,w}
+\end{align} 
+\item Skew symmetry
+\begin{align}
+\label{skew	1}
+R(x,y,z,w)&=-R(y,x,z,w)\\
+\label{skew	2}
+R(x,y,z,w)&=-R(x,y,w,z)
+\end{align} 
+\item Symmetry
+\begin{align}
+\label{sym}
+R(x,y,z,w)=R(z,w,x,y)
+\end{align}
+\item Bianchi Identity
+\begin{align}
+\label{bianchi}
+\sum_{\pi(x,y,z)}R(x,y,z,w)=0
+\end{align}
+\item Sectional Curvature
+\begin{align}
+K(v,w)=\bfrac{R(v,w,w,v)}{\norm{v\wedge w}^2}
+\end{align}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Setting Up}
+Now, define a polynomial
+\begin{align}
+\label{polynomial f}
+f(t)=&R(x+tw,y+tz,y+tz,x+tw)\\
+&-t^2(R(x,z,z,x)+R(w,y,y,w))
+\end{align}
+Since all terms are symmetric, $f(t)$ can be expressed in terms of the sectional curvature and norm of wedge products. Thus, the RHS of equation \ref{polynomial f} is a polynomial in $t$ whose coefficients are the sectional curvatures.\\ \pause
+Consider the coefficient of $t^2$ in equation \ref{polynomial f}. Using the multi linearity property of $R$ tensor, we can write it as
+\begin{align}
+f''(0)=R(x,y,z,w)+R(x,z,y,w)+R(w,z,y,x)+R(w,y,z,x)
+\end{align}
+\end{frame}
+
+\begin{frame}
+Using equations \ref{skew	1}, \ref{skew	2}, \ref{sym}, we obtain
+\begin{align}
+\label{coeff in f}
+f''(0)=2R(x,y,z,w)-2R(z,x,y,w)
+\end{align}
+\frametitle{Some Simple Manipulations}
+Now, exchange $x$ and $y$ and define a new polynomial
+\begin{align}
+\label{polynomial g}
+g(t)=&R(y+tw,x+tz,x+tz,y+tw)\\
+&-t^2(R(y,z,z,y)+R(w,x,x,w))
+\end{align}
+Since all terms are symmetric, $g(t)$ can again be expressed in terms of the sectional curvature and norm of wedge products. Following a similar procedure, we obtain
+\begin{align}
+\label{coeff in g}
+g''(0)=-2R(x,y,z,w)+2R(y,z,x,w)
+\end{align}
+\pause
+Now, \ref{coeff in f}-\ref{coeff in g} gives
+\begin{align}
+\label{riemann xyz}
+f''(0)-g''(0)=4R(x,y,z,w)-2R(z,x,y,w)-2R(y,z,x,w)
+\end{align}
+\end{frame}
+
+\begin{frame}
+\frametitle{Completion of Proof}
+Using \ref{bianchi},
+\begin{align}
+\label{substitution}
+R(z,x,y,w)+R(y,z,x,w)=-R(x,y,z,w)
+\end{align}
+Substituting \ref{substitution} in \ref{riemann xyz},
+\begin{align}
+\label{final form}
+f''(0)-g''(0)&=6R(x,y,z,w)\\
+\Rightarrow &R(x,y,z,w)=\bfrac{f''(0)-g''(0)}{6}=\bfrac{(f-g)''(0)}{6}
+\end{align}
+\end{frame}
+
+\begin{frame}
+\frametitle{Final Result}
+We need the polynomials $f$ and $g$ in terms of sectional curvature. Observe the form of $f$ in \ref{polynomial f}. Using the formula for sectional curvature,
+\begin{align}
+\label{f as sectional}
+f(t)=&K(x+tw,y+tz)\norm{(x+tw)\wedge(y+tz)}^2\\
+&-t^2(K(x,z)\norm{x\wedge z}^2+K(w,y)\norm{w\wedge y}^2)
+\end{align}
+Likewise
+\begin{align}
+\label{g as sectional}
+g(t)=&K(y+tw,x+tz)\norm{(y+tw)\wedge(x+tz)}^2\\
+&-t^2(K(y,z)\norm{y\wedge z}^2+K(w,x)\norm{w\wedge x}^2)
+\end{align}
+\end{frame}
+
+\begin{frame}
+\frametitle{Halloween Special: A Scary Expression}
+Complete evaluation of equations \ref{final form}, \ref{f as sectional}, and \ref{g as sectional} gives an explicit formula for $R(x,y,z,w)$.
+\pause
+{\footnotesize
+\begin{align*}
+6\inner{R(x,y)z,w}=&K(x+w,y+z)\norm{(x+w)\wedge (y+z)}^2\\
+&-K(y+w,x+z)\norm{(y+w)\wedge (x+z)}^2\\
+&-K(x,y+z)\norm{x\wedge (y+z)}^2-K(y,x+w)\norm{y\wedge (x+w)}^2\\
+&-K(z,x+w)\norm{z\wedge (x+w)}^2-K(w,y+z)\norm{w\wedge (y+z)}^2\\
+&+K(x,y+w)\norm{x\wedge (y+w)}^2+K(y,z+w)\norm{y\wedge (z+w)}^2\\
+&+K(z,y+w)\norm{z\wedge (y+w)}^2+K(w,x+z)\norm{w\wedge (x+z)}^2\\
+&+K(x,z)\norm{x\wedge z}^2+K(y,w)\norm{y\wedge w}^2\\ 
+&-K(x,w)\norm{x\wedge w}^2-K(y,z)\norm{y\wedge z}^2\\ 
+\end{align*}
+}%
+Quite scary, isn't it?
+\end{frame}
